@@ -1,0 +1,17 @@
+# netlify.toml
+
+[build]
+  # This command is not strictly necessary for a simple site but is good practice.
+  command = "npm install" 
+  # Specifies where your static files are. We assume they are in the root.
+  publish = "." 
+
+[functions]
+  # Specifies the directory where your serverless functions are located.
+  directory = "netlify/functions/"
+
+# This rule forwards any requests from /api/* to your serverless function.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/birthdays/:splat"
+  status = 200
